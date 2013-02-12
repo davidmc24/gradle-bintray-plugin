@@ -39,6 +39,7 @@ public class BintrayRepositoriesExtension {
         return repo(args, Actions.doNothing());
     }
 
+    @SuppressWarnings("unchecked")
     public MavenArtifactRepository repo(Map<String, ?> args, Closure closure) {
         return repo(args, new ClosureBackedAction(closure));
     }
