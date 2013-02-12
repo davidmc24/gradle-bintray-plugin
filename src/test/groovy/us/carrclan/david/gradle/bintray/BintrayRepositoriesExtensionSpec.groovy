@@ -125,5 +125,15 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         'davidmc24' | 'gradle-bintray-plugin'   | 'http://dl.bintray.com/content/davidmc24/gradle-bintray-plugin'
     }
 
-    // TODO: test name determination
+    def "names are determined based on repoOwner and repoName"(String repoOwner, String repoName, String name) {
+        expect:
+        project.repositories.bintray.determineRepositoryName(repoOwner, repoName) == name
+
+        where:
+        repoOwner   | repoName                  | name
+        'bintray'   | 'jcenter'                 | 'BintrayBintrayJcenter'
+        'davidmc24' | 'gradle-bintray-plugin'   | 'BintrayDavidmc24GradleBintrayPlugin'
+        'joe'       | 'maven'                   | 'BintrayJoeMaven'
+        'WowCorp'   | 'AmazingSoftware'         | 'BintrayWowCorpAmazingSoftware'
+    }
 }
