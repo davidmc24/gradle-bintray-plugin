@@ -115,7 +115,15 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         repo.credentials.password == 'secret'
     }
 
-    // TODO: test URL determination
+    def "urls are determined based on repoOwner and repoName"(String repoOwner, String repoName, String url) {
+        expect:
+        project.repositories.bintray.determineRepositoryUrl(repoOwner, repoName) == url
+
+        where:
+        repoOwner   | repoName                  | url
+        'bintray'   | 'jcenter'                 | 'http://dl.bintray.com/content/bintray/jcenter'
+        'davidmc24' | 'gradle-bintray-plugin'   | 'http://dl.bintray.com/content/davidmc24/gradle-bintray-plugin'
+    }
 
     // TODO: test name determination
 }
