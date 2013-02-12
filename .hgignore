@@ -1,0 +1,16 @@
+syntax: glob
+
+# Gradle
+.gradle
+build
+
+# IntelliJ
+.idea
+target
+*.iml
+*.ipr
+*.iws
+
+# Mercurial
+*.orig
+*.rej
