@@ -69,13 +69,13 @@ public class BintrayRepositoriesExtension {
         return stringValue;
     }
 
-    private String determineRepositoryName(String repoOwner, String repoName) {
+    String determineRepositoryName(String repoOwner, String repoName) {
         return String.format("Bintray%s%s",
                 toTitleCase(separatorsToCaps(repoOwner)),
                 toTitleCase(separatorsToCaps(repoName)));
     }
 
-    private String determineRepositoryUrl(String repoOwner, String repoName) {
+    String determineRepositoryUrl(String repoOwner, String repoName) {
         return String.format("http://dl.bintray.com/content/%s/%s", repoOwner, repoName);
     }
 

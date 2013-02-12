@@ -95,4 +95,10 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         repo instanceof MavenArtifactRepository
         repo.url.toString() == 'http://mirrors.example.com/bintray/joe/maven'
     }
+
+    // TODO: test URL determination
+
+    // TODO: test name determination
+
+    // TODO: test authentication config
 }
