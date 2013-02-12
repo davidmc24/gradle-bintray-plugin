@@ -96,9 +96,26 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         repo.url.toString() == 'http://mirrors.example.com/bintray/joe/maven'
     }
 
+    def "bintray.repo allows specifying credentials"() {
+        when:
+        project.with {
+            repositories {
+                bintray.repo(repoOwner: 'joe', repoName: 'maven') {
+                    credentials {
+                        username = 'frank'
+                        password = 'secret'
+                    }
+                }
+            }
+        }
+        MavenArtifactRepository repo = project.repositories.BintrayJoeMaven
+
+        then:
+        repo.credentials.username == 'frank'
+        repo.credentials.password == 'secret'
+    }
+
     // TODO: test URL determination
 
     // TODO: test name determination
-
-    // TODO: test authentication config
 }
