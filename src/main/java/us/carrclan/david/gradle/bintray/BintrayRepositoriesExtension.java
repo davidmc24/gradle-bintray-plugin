@@ -11,14 +11,14 @@ public class BintrayRepositoriesExtension {
     public static final String NAME = "bintray";
     public static final String JCENTER_URL = "http://jcenter.bintray.com";
 
-    private final RepositoryHandler repositoryHandler;
+    private final RepositoryHandler repositories;
 
-    public BintrayRepositoriesExtension(RepositoryHandler repositoryHandler) {
-        this.repositoryHandler = repositoryHandler;
+    public BintrayRepositoriesExtension(RepositoryHandler repositories) {
+        this.repositories = repositories;
     }
 
     public MavenArtifactRepository jcenter() {
-        return repositoryHandler.maven(new Action<MavenArtifactRepository>() {
+        return repositories.maven(new Action<MavenArtifactRepository>() {
             public void execute(MavenArtifactRepository repository) {
                 repository.setName("jcenter");
                 repository.setUrl(JCENTER_URL);
@@ -31,7 +31,7 @@ public class BintrayRepositoriesExtension {
     }
 
     public MavenArtifactRepository repo(final String owner, final String name, final Action<? super MavenArtifactRepository> action) {
-        return repositoryHandler.maven(new Action<MavenArtifactRepository>() {
+        return repositories.maven(new Action<MavenArtifactRepository>() {
             public void execute(MavenArtifactRepository repository) {
                 repository.setName(determineRepositoryName(owner, name));
                 repository.setUrl(determineRepositoryUrl(owner, name));

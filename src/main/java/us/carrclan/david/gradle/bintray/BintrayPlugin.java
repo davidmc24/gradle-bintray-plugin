@@ -8,9 +8,8 @@ import org.gradle.api.plugins.ExtensionContainer;
 
 public class BintrayPlugin implements Plugin<Project> {
     public void apply(Project project) {
-        RepositoryHandler repositoryHandler = project.getRepositories();
-        DslObject dslObject = new DslObject(repositoryHandler);
-        ExtensionContainer extensionContainer = dslObject.getExtensions();
-        extensionContainer.create(BintrayRepositoriesExtension.NAME, BintrayRepositoriesExtension.class, repositoryHandler);
+        RepositoryHandler repositories = project.getRepositories();
+        ExtensionContainer extensions = new DslObject(repositories).getExtensions();
+        extensions.create(BintrayRepositoriesExtension.NAME, BintrayRepositoriesExtension.class, repositories);
     }
 }
