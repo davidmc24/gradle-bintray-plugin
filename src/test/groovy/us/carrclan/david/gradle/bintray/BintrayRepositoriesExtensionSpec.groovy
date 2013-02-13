@@ -11,7 +11,7 @@ class BintrayRepositoriesExtensionSpec extends Specification {
 
     def setup() {
         project = ProjectBuilder.builder().build()
-        project.apply(plugin: BintrayPlugin)
+        project.apply(from: new File('Bintray.gradle').toURI().toURL().toExternalForm())
     }
 
     def "bintray.jcenter creates jcenter repository"() {
@@ -25,7 +25,7 @@ class BintrayRepositoriesExtensionSpec extends Specification {
 
         then:
         repo instanceof MavenArtifactRepository
-        repo.url.toString() == BintrayRepositoriesExtension.JCENTER_URL
+        repo.url.toString() == 'http://jcenter.bintray.com'
     }
 
     def "bintray.repo requires repoOwner arg"() {

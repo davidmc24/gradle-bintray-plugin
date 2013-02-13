@@ -9,9 +9,10 @@ class BintrayPluginSpec extends Specification {
 
     def "repositories extension is registered"() {
         when: "the plugin is applied to a project"
-        project.apply(plugin: BintrayPlugin)
+        project.apply(from: new File('Bintray.gradle').toURI().toURL().toExternalForm())
 
         then: "the repositories extension is registered"
-        project.repositories.bintray instanceof BintrayRepositoriesExtension
+        project.repositories.bintray != null
+        project.buildscript.repositories.bintray != null
     }
 }
