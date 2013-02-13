@@ -8,6 +8,7 @@ To use the plugin, configure your build.gradle based on the example below.
 
 Replace `VERSION` below with the desired version.
 
+    :::groovy
     buildscript {
         apply from: 'https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/VERSION/Bintray.gradle'
     }
@@ -37,6 +38,7 @@ Bintray-owned repositories (such as the [JCenter][] repository) allow anonymous 
 
 ## Configuration Example
 
+    :::groovy
     repositories {
         bintray.jcenter() // Bintray-owned, allows anonymous access
         bintray.repo(repoOwner: 'davidmc24', repoName: 'gradle-plugins') // Uses credentials from gradle.properties
