@@ -115,6 +115,41 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         repo.credentials.password == 'secret'
     }
 
+    def "credentials are required when project properties aren't present"() {
+        when:
+        project.with {
+            repositories {
+                bintray.repo(repoOwner: 'davidmc24', repoName: 'gradle-plugins')
+            }
+        }
+        MavenArtifactRepository repo = project.repositories.BintrayDavidmc24GradlePlugins
+        repo.credentials.username // Simulate accessing credentials as part of repository use
+
+        then:
+        InvalidUserDataException ex = thrown()
+        ex.message == "Bintray repositories require authentication.  Please configure the credentials either " +
+                "directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in " +
+                "your gradle.properties.file."
+    }
+
+    def "credentials default to project properties"() {
+        when:
+        project.ext {
+            bintrayUserName = 'userFromProject'
+            bintrayApiKey = 'passFromProject'
+        }
+        project.with {
+            repositories {
+                bintray.repo(repoOwner: 'davidmc24', repoName: 'gradle-plugins')
+            }
+        }
+        MavenArtifactRepository repo = project.repositories.BintrayDavidmc24GradlePlugins
+
+        then:
+        repo.credentials.username == 'userFromProject'
+        repo.credentials.password == 'passFromProject'
+    }
+
     def "urls are determined based on repoOwner and repoName"(String repoOwner, String repoName, String url) {
         expect:
         project.repositories.bintray.determineRepositoryUrl(repoOwner, repoName) == url

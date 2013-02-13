@@ -12,10 +12,12 @@ class BintrayRepositoriesExtension {
     static final String URL_ARG_NAME = 'url'
     static final String NAME_ARG_NAME = 'name'
 
-    RepositoryHandler repositories;
+    Project project
+    RepositoryHandler repositories
 
-    BintrayRepositoriesExtension(RepositoryHandler repositories) {
-        this.repositories = repositories;
+    BintrayRepositoriesExtension(Project project, RepositoryHandler repositories) {
+        this.project = project
+        this.repositories = repositories
     }
 
     MavenArtifactRepository jcenter() {
@@ -45,6 +47,18 @@ class BintrayRepositoriesExtension {
             modifiedArgs.put(NAME_ARG_NAME, determineRepositoryName(repoOwner, repoName))
         }
         return repositories.maven { MavenArtifactRepository repository ->
+            repository.credentials.conventionMapping.username = {
+                if (!project.hasProperty('bintrayUserName')) {
+                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties.file.")
+                }
+                return project.bintrayUserName
+            }
+            repository.credentials.conventionMapping.password = {
+                if (!project.hasProperty('bintrayApiKey')) {
+                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties.file.")
+                }
+                project.bintrayApiKey
+            }
             ConfigureUtil.configureByMap(modifiedArgs, repository)
             action.execute(repository)
         }
@@ -90,5 +104,5 @@ class BintrayRepositoriesExtension {
     }
 }
 
-project.buildscript.repositories.extensions.create('bintray', BintrayRepositoriesExtension, project.buildscript.repositories)
-project.repositories.extensions.create('bintray', BintrayRepositoriesExtension, project.repositories)
+project.buildscript.repositories.extensions.create('bintray', BintrayRepositoriesExtension, project, project.buildscript.repositories)
+project.repositories.extensions.create('bintray', BintrayRepositoriesExtension, project, project.repositories)
