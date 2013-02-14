@@ -25,6 +25,15 @@ Gradle Version | Plugin Version
 
 If you want the latest development version, you can use `default` as a version.
 
+## Offline Use
+
+As of Gradle 1.4, external build scripts are not cached.  That means that with the example above cannot be used without a network connection.  If you want to be able to  build offline, download Bintray.gradle to your project root, and instead declare the plugin like this:
+
+    :::groovy
+    buildscript {
+        apply file: 'Bintray.gradle'
+    }
+
 # Configuration
 
 The plugin adds special syntax in `repositories` blocks to declare Bintray repositories.
