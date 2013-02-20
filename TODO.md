@@ -4,6 +4,8 @@ This file contains a listing of possible future changes for the plugin.  A given
 
 ## Now
 
+* Update documentation to recommend installation in "gradle" directory used by wrapper.
+
 Items in this group are either under active development, or will likely be under active development soon.  Most items in this list should make it into the next feature release.
 
 ## Soon
