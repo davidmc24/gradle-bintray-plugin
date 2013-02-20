@@ -1,38 +1,33 @@
 # Overview
 The Bintray plugin is a [Gradle][] plugin to allow easier use of [Bintray][] repositories.  It is available for use under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).  If you have any issues, please check the [issue tracker](https://bitbucket.org/davidmc24/gradle-bintray-plugin/issues?status=new&status=open), and if there isn't anything relevant, submit a new issue.
 
-# Usage
-To use the plugin, configure your build.gradle based on the example below.
+# Installation
+
+If you aren't already using the [Gradle Wrapper](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html), start now.  It makes it easy for people using your project to build with Gradle without requiring Gradle to be installed ahead of time, as well as providing an easy way to encourage use of the intended version of Gradle.
+
+To use the Bintray plugin:
+
+* Download "Bintray.gradle" into the `gradle` directory created by the Gradle Wrapper based on one of the download links below.
+* Configure your build.gradle based on the example below.  Depending on your codebase (multi-project, etc.) you may need to tweak the path a little.
 
 ## build.gradle
 
-Replace `VERSION` below with the desired version.
-
     :::groovy
     buildscript {
-        apply from: 'https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/VERSION/Bintray.gradle'
+        apply from: 'gradle/Bintray.gradle'
     }
 
 Note that the `apply` statement **MUST** be in the buildscript block and before any bintray repository definitions in order to work as intended.  If you apply the script outside of the buildscript block, the `bintray` extension to the buildscript `RepositoryHandler` will not be registered in time for use resolving buildscript dependencies.
 
-## Versions
+## Download Links
 
 Creating this plugin required the usage of Gradle internal APIs which may not be stable across versions.  Below is a matrix of tested compatible versions.  In general, it's best to use the latest version that's shown as tested with your version of Gradle.
 
 Gradle Version | Plugin Version
 -------------: | --------------
-1.4            | 0.1.0
+1.4            | [0.1.0](https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/0.1.0/Bintray.gradle)
 
-If you want the latest development version, you can use `default` as a version.
-
-## Offline Use
-
-As of Gradle 1.4, external build scripts are not cached.  That means that with the example above cannot be used without a network connection.  If you want to be able to  build offline, download Bintray.gradle to your project root, and instead declare the plugin like this:
-
-    :::groovy
-    buildscript {
-        apply file: 'Bintray.gradle'
-    }
+You can get the latest development version [here](https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/default/Bintray.gradle).
 
 # Configuration
 
