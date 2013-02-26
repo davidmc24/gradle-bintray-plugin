@@ -25,7 +25,7 @@ Creating this plugin required the usage of Gradle internal APIs which may not be
 
 Gradle Version | Plugin Version
 -------------: | --------------
-1.4            | [0.1.0](https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/0.1.0/Bintray.gradle)
+1.4            | [0.1.0](http://dl.bintray.com/content/davidmc24/gradle-plugins/us/carrclan/david/gradle/gradle-bintray-plugin/0.1.0/Bintray.gradle?direct)
 
 You can get the latest development version [here](https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/default/Bintray.gradle).
 
