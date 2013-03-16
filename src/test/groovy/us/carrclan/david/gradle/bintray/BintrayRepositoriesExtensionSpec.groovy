@@ -142,7 +142,7 @@ class BintrayRepositoriesExtensionSpec extends Specification {
         InvalidUserDataException ex = thrown()
         ex.message == "Bintray repositories require authentication.  Please configure the credentials either " +
                 "directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in " +
-                "your gradle.properties.file."
+                "your gradle.properties file."
     }
 
     def "credentials default to project properties"() {

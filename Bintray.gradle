@@ -62,13 +62,13 @@ class BintrayRepositoriesExtension {
         return repositories.maven { MavenArtifactRepository repository ->
             repository.credentials.conventionMapping.username = {
                 if (!project.hasProperty('bintrayUserName')) {
-                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties.file.")
+                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties file.")
                 }
                 return project.bintrayUserName
             }
             repository.credentials.conventionMapping.password = {
                 if (!project.hasProperty('bintrayApiKey')) {
-                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties.file.")
+                    throw new InvalidUserDataException("Bintray repositories require authentication.  Please configure the credentials either directly in the repository definition, or with 'bintrayUserName' and 'bintrayApiKey' properties in your gradle.properties file.")
                 }
                 project.bintrayApiKey
             }
