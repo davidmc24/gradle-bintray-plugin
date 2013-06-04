@@ -12,10 +12,11 @@ To use the Bintray plugin:
 
 ## build.gradle
 
-    :::groovy
-    buildscript {
-        apply from: 'gradle/Bintray.gradle'
-    }
+```groovy
+buildscript {
+    apply from: 'gradle/Bintray.gradle'
+}
+```
 
 Note that the `apply` statement **MUST** be in the buildscript block and before any bintray repository definitions in order to work as intended.  If you apply the script outside of the buildscript block, the `bintray` extension to the buildscript `RepositoryHandler` will not be registered in time for use resolving buildscript dependencies.
 
@@ -37,22 +38,25 @@ The plugin adds special syntax in `repositories` blocks to declare Bintray repos
 
 Bintray-owned repositories (such as the [JCenter][] repository) allow anonymous downloads via Gradle, but others don't.  For them, you'll need to configure authentication.  The recommended method is to add `bintrayUserName` and `bintrayApiKey` properties to your gradle.properties file, based on the example below:
 
-    bintrayUserName = joe
-    bintrayApiKey = 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+```
+bintrayUserName = joe
+bintrayApiKey = 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+```
 
 ## Configuration Example
 
-    :::groovy
-    repositories {
-        bintray.jcenter() // Bintray-owned, allows anonymous access
-        bintray.repo(repoOwner: 'davidmc24', repoName: 'gradle-plugins') // Uses credentials from gradle.properties
-        bintray.repo(repoOwner: 'WowCorp', repoName: 'AmazingSoftware') {
-            credentials {
-                username = 'joe'
-                password = '1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
-            }
+```groovy
+repositories {
+    bintray.jcenter() // Bintray-owned, allows anonymous access
+    bintray.repo(repoOwner: 'davidmc24', repoName: 'gradle-plugins') // Uses credentials from gradle.properties
+    bintray.repo(repoOwner: 'WowCorp', repoName: 'AmazingSoftware') {
+        credentials {
+            username = 'joe'
+            password = '1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
         }
     }
+}
+```
 
 [gradle]: http://www.gradle.org/
 [bintray]: https://www.bintray.com/
