@@ -1,5 +1,5 @@
 # Overview
-The Bintray plugin is a [Gradle][] plugin to allow easier use of [Bintray][] repositories.  It is available for use under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).  If you have any issues, please check the [issue tracker](https://bitbucket.org/davidmc24/gradle-bintray-plugin/issues?status=new&status=open), and if there isn't anything relevant, submit a new issue.
+The Bintray plugin is a [Gradle][] plugin to allow easier use of [Bintray][] repositories.  It is available for use under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).  If you have any issues, please check the [issue tracker](https://github.com/davidmc24/gradle-bintray-plugin/issues), and if there isn't anything relevant, submit a new issue.
 
 # Installation
 
@@ -25,9 +25,9 @@ Creating this plugin required the usage of Gradle internal APIs which may not be
 
 Gradle Version | Plugin Version
 -------------: | --------------
-1.4            | [0.1.0](http://dl.bintray.com/content/davidmc24/gradle-plugins/us/carrclan/david/gradle/gradle-bintray-plugin/0.1.0/Bintray.gradle?direct)
+1.4            | [0.1.0](https://raw.github.com/davidmc24/gradle-bintray-plugin/0.1.0/Bintray.gradle)
 
-You can get the latest development version [here](https://bitbucket.org/davidmc24/gradle-bintray-plugin/raw/default/Bintray.gradle).
+You can get the latest development version [here](https://raw.github.com/davidmc24/gradle-bintray-plugin/master/Bintray.gradle).
 
 # Configuration
 
