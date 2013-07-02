@@ -1,6 +1,8 @@
 # Overview
 The Bintray plugin is a [Gradle][] plugin to allow easier use of [Bintray][] repositories.  It is available for use under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).  If you have any issues, please check the [issue tracker](https://github.com/davidmc24/gradle-bintray-plugin/issues), and if there isn't anything relevant, submit a new issue.
 
+This plugin is unlikely to receive further updates, as Gradle 1.7 looks like it will have this type of functionality built-in.
+
 [![Build Status](https://drone.io/github.com/davidmc24/gradle-bintray-plugin/status.png)](https://drone.io/github.com/davidmc24/gradle-bintray-plugin/latest)
 
 # Installation
